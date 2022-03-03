@@ -112,13 +112,26 @@ def game():
                 print(''.join(progreso))
                 print('Ganaste!')
                 break
+     
+
+def close():
+    while True:
+        reset = int(input("\n \n Volver a Jugar? [1] Si / [2] No: "))
+        if reset == 2:
+            system("clear")
+            break
+        else:
+            system("clear")
+            run()
 
 def run():
     read()
     randomize()
     game()
+    close()
 
 
+    
 
 if __name__ == '__main__':
     run()
