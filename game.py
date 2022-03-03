@@ -11,6 +11,13 @@ def read():
         for line in f:
             palabra.append(str.strip(line))
 
+def write():
+    palabras = [input(str("Agrega una palabra: "))]
+    with open("/home/franki/Documents/Code/Cursos/Python/hangman_game/data/data.txt", "a", encoding="utf-8") as f:
+        for palabra_agregada in palabras:
+            f.write("\n")
+            f.write(palabra_agregada)
+
 def randomize():
     global palabra_random
     palabra_random = random.choice(palabra)
@@ -113,8 +120,6 @@ def game():
                 print('Ganaste!')
                 break
      
-
-def close():
     while True:
         reset = int(input("\n \n Volver a Jugar? [1] Si / [2] No: "))
         if reset == 2:
@@ -125,13 +130,25 @@ def close():
             run()
 
 def run():
-    read()
-    randomize()
-    game()
-    close()
+    while True:
+        bienvenidos = int(input('''\n  Bienvenido al ahorcado, usted desea
+                    \n \t [1] Jugar
+                    \n \t [2] Agregar palabra
+                    \n \t [3] Salir
+                    \n Elegí la opción que quieras. '''))
 
+        if bienvenidos == 1:
+            read()
+            randomize()
+            game()
 
-    
+        elif bienvenidos == 2:
+            write()
+        elif bienvenidos == 3:
+            break
+        else:
+            print("Elije una opcion valida")
+
 
 if __name__ == '__main__':
     run()
